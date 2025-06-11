@@ -15,7 +15,9 @@ class scoreboard;
       mon2scb.get(trans);
       trans.display("SCOREBOARD CLASS SIGNALS");
       
-      if(((trans.d == trans.q) && (trans.qbar == ~trans.q)) ||  ((!trans.rst) && (trans.q == 0) && (trans.qbar == 1)))
+      
+      if ((trans.rst && (trans.q == 0) && (trans.qbar == 1)) || 
+    (!trans.rst && (trans.q == trans.d) && (trans.qbar == ~trans.q)))
         $display("STATUS:Testcase Pass");
       else
         $display("STATUS:Testcase fail");
